@@ -23,9 +23,9 @@ export function ServerStatus() {
   }, []);
 
   return (
-    <Card className="bg-card/50 backdrop-blur-sm border-border p-4 lg:p-6">
-      <div className="grid grid-cols-3 gap-4">
-        <div className="flex flex-col items-center justify-center gap-2">
+    <div className="glass-strong rounded-3xl border border-border/50 p-6 lg:p-8 shadow-xl">
+      <div className="grid grid-cols-3 gap-6">
+        <div className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl hover:bg-success/5 transition-colors">
           <div className="flex items-center gap-2">
             <Circle
               className={`h-3 w-3 ${
@@ -34,32 +34,32 @@ export function ServerStatus() {
                   : "fill-destructive text-destructive"
               }`}
             />
-            <span className="text-xs text-muted-foreground uppercase font-medium">Status</span>
+            <span className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Status</span>
           </div>
-          <span className="text-lg lg:text-2xl font-bold text-success">
+          <span className="text-xl lg:text-3xl font-bold font-display text-success">
             {stats.status === "online" ? "Online" : "Offline"}
           </span>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-2">
+        <div className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl hover:bg-primary/5 transition-colors">
           <div className="flex items-center gap-2">
-            <Users className="h-4 w-4 text-muted-foreground" />
-            <span className="text-xs text-muted-foreground uppercase font-medium">Players</span>
+            <Users className="h-5 w-5 text-primary" />
+            <span className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Players</span>
           </div>
-          <span className="text-lg lg:text-2xl font-bold">
-            {stats.online}
-            <span className="text-sm text-muted-foreground font-normal">/{stats.maxPlayers}</span>
-          </span>
+          <div className="text-xl lg:text-3xl font-bold font-display">
+            <span className="text-gradient">{stats.online}</span>
+            <span className="text-base text-muted-foreground font-normal">/{stats.maxPlayers}</span>
+          </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-2">
+        <div className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl hover:bg-info/5 transition-colors">
           <div className="flex items-center gap-2">
-            <Wifi className="h-4 w-4 text-muted-foreground" />
-            <span className="text-xs text-muted-foreground uppercase font-medium">Ping</span>
+            <Wifi className="h-5 w-5 text-secondary-accent" />
+            <span className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Ping</span>
           </div>
-          <span className="text-lg lg:text-2xl font-bold text-info">{stats.ping}ms</span>
+          <span className="text-xl lg:text-3xl font-bold font-display text-secondary-accent">{stats.ping}ms</span>
         </div>
       </div>
-    </Card>
+    </div>
   );
 }

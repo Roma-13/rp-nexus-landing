@@ -15,15 +15,18 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 glass-strong border-b border-border/50">
       <nav className="container mx-auto px-4 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="h-10 w-10 rounded-lg bg-gradient-accent flex items-center justify-center">
-              <span className="font-display text-xl font-bold text-primary-foreground">LS</span>
+        <div className="flex h-20 items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="relative h-12 w-12">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-accent blur-lg opacity-60 animate-glow-pulse"></div>
+              <div className="relative h-full w-full rounded-2xl bg-gradient-accent flex items-center justify-center shadow-glow">
+                <span className="font-display text-2xl font-bold text-primary-foreground">LS</span>
+              </div>
             </div>
-            <span className="font-display text-xl font-bold tracking-tight">
-              Los Santos <span className="text-primary">RP</span>
+            <span className="font-display text-2xl font-bold tracking-tight hidden sm:block">
+              Los Santos <span className="text-gradient">RP</span>
             </span>
           </div>
 
@@ -41,10 +44,10 @@ export function Header() {
           </div>
 
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="outline" size="sm" asChild>
+            <Button variant="outline" size="lg" className="glass border-border/50 hover:border-primary/50" asChild>
               <a href="#discord">Discord</a>
             </Button>
-            <Button size="sm" className="bg-gradient-accent shadow-glow" asChild>
+            <Button size="lg" className="bg-gradient-accent shadow-glow hover:shadow-xl transition-all hover:scale-105" asChild>
               <a href="#join">Join Now</a>
             </Button>
           </div>

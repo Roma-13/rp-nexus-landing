@@ -42,41 +42,67 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="py-24 bg-gradient-to-b from-background to-secondary/20">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center mb-16 animate-fade-up">
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-            Server <span className="text-primary">Features</span>
+    <section id="features" className="py-32 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 grid-pattern opacity-20"></div>
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] floating"></div>
+      
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        <div className="text-center mb-20 animate-fade-up space-y-4">
+          <div className="inline-block px-4 py-2 rounded-full glass border border-primary/20 mb-4">
+            <span className="text-sm font-bold text-primary uppercase tracking-wider">Features</span>
+          </div>
+          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+            Server <span className="text-gradient">Features</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-xl max-w-3xl mx-auto leading-relaxed">
             Everything you need for an immersive roleplay experience, from law enforcement to business ownership.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Card
+            <div
               key={index}
-              className="bg-gradient-card border-border hover:border-primary/50 transition-all duration-300 group hover:shadow-lg hover:-translate-y-1"
+              className="group relative animate-fade-up"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <CardHeader>
-                <div className="mb-4 relative">
+              {/* Glow effect on hover */}
+              <div className="absolute inset-0 bg-gradient-accent opacity-0 group-hover:opacity-10 blur-2xl transition-opacity rounded-3xl"></div>
+              
+              {/* Card */}
+              <div className="relative glass-strong rounded-3xl border border-border/50 p-8 hover:border-primary/50 transition-all duration-500 group-hover:scale-105 hover:shadow-xl h-full flex flex-col">
+                <div className="mb-6 relative">
                   {feature.badge ? (
-                    <img src={feature.badge} alt={feature.title} className="h-16 w-16 object-contain" />
+                    <div className="relative w-20 h-20">
+                      <div className="absolute inset-0 bg-gradient-accent blur-xl opacity-0 group-hover:opacity-50 transition-opacity rounded-full"></div>
+                      <img src={feature.badge} alt={feature.title} className="relative h-20 w-20 object-contain group-hover:scale-110 transition-transform duration-500" />
+                    </div>
                   ) : (
-                    <div className="h-14 w-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <feature.icon className="h-7 w-7 text-primary" />
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-primary blur-xl opacity-0 group-hover:opacity-30 transition-opacity rounded-2xl"></div>
+                      <div className="relative h-20 w-20 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center group-hover:from-primary/30 group-hover:to-primary/10 transition-all border border-primary/20">
+                        <feature.icon className="h-10 w-10 text-primary group-hover:scale-110 transition-transform duration-500" />
+                      </div>
                     </div>
                   )}
                 </div>
-                <CardTitle className="text-xl font-bold group-hover:text-primary transition-colors">
+                
+                <h3 className="text-2xl font-bold mb-3 group-hover:text-gradient transition-all font-display">
                   {feature.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
-              </CardContent>
-            </Card>
+                </h3>
+                
+                <p className="text-muted-foreground leading-relaxed text-lg flex-grow">
+                  {feature.description}
+                </p>
+
+                {/* Hover arrow */}
+                <div className="mt-6 flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="text-sm font-semibold">Learn more</span>
+                  <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
